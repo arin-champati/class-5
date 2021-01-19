@@ -1,0 +1,5 @@
+DB_HOST = 'someHose'
+DB_PORT = 'somePort'
+DB_USER = 'someUser'
+DB_PASSWORD = 'somePassword'
+DB_NAME = 'someName'

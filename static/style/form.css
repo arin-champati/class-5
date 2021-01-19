@@ -1,0 +1,173 @@
+.remove-button {
+    height: 100%                  !important;
+    background-color: #ccdcf6   !important;
+    border-color: transparent     !important;
+    border-top-left-radius: 0     !important;
+    border-bottom-left-radius: 0  !important;
+    margin: 0                    !important;
+    color: #4f71bd              !important;
+  }
+
+  .remove-button:hover {
+    background-color: #c3d2eb     !important;
+  }
+
+  .remove-button:active {
+    background-color: #b9c8e0     !important;
+  }
+
+  .non-removable input {
+    border-radius: 3.5px !important;
+  }
+
+.add-button {
+  background-color: #ccdcf6 !important;
+  width: 100%               !important;
+  height: 34px              !important;
+  display: flex             !important;
+  justify-content: center   !important;
+  align-items: center       !important;
+  /* font-size: 20px; */
+  color: #4f71bd            !important;
+  padding: 0                  !important;
+  border-color: transparent   !important;
+  border-radius: 3.5px        !important;
+}
+
+.add-button:hover {
+  background-color: #c3d2eb   !important;
+  border-color: transparent     !important;
+  color: #4f71bd              !important;
+}
+
+.add-button:active {
+  background-color: #b9c8e0 !important; 
+  border-color: transparent !important;
+  color: #4f71bd !important;
+}
+
+.suggestion {
+  border-color: transparent     !important;
+  border-top-left-radius: 0     !important;
+  border-bottom-left-radius: 0  !important;
+  margin: 0                     !important;
+  text-align: left              !important;
+  border-top-left-radius: 3.5px        !important;
+  border-bottom-left-radius: 3.5px        !important;
+  line-height: 0px               !important;
+  background-color: #dcdee0 !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+/* Dont allow labels to trigger an event */
+#Suggestions label {
+  pointer-events:none;
+}
+
+/* .suggestion:hover {
+  background-color: #d4d6d6 !important;
+} */
+
+.suggestion:active {
+  background-color: #d4d6d6 !important;
+}
+
+.filter {
+  border-color: transparent     !important;
+  border-top-left-radius: 0     !important;
+  border-bottom-left-radius: 0  !important;
+  margin: 0                     !important;
+  text-align: left              !important;
+  border-top-left-radius: 3.5px        !important;
+  border-bottom-left-radius: 3.5px        !important;
+  line-height: 0px               !important;
+  background-color:  #ccdcf6   !important;
+  color: #4f71bd !important;
+  text-overflow: ellipsis !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+  cursor: pointer !important;
+}
+
+.filters:hover .filter{
+  background-color: #c3d2eb  !important;
+}
+
+.filters:active .filter{
+  background-color: #b9c8e0 !important;
+}
+
+.filters .remove-button {
+  background-color: #4f71bd !important;
+  color: #ccdcf6 !important;
+}
+
+.filters:hover .remove-button{
+  background-color: #395fb3  !important;
+}
+
+.filters:active .remove-button{
+  background-color: #3a599e  !important;
+}
+
+
+/* .info-button {
+  background-color: transparent;
+  display: inline-block;
+  justify-content: center;
+  align-items: center;
+  color: #4f71bd;
+  padding: 0;
+  border-color: transparent;
+  border-radius: 3.5px;
+} */
+
+.info-button{ 
+  position:absolute; 
+  width:30px;
+  height:30px; 
+  color: #4f71bd;
+  background-color: transparent;
+  border-color: transparent;
+  right:20px; 
+  top:20px;
+  font-size: 15px;
+}
+
+
+/* .add-button .glyphicon {
+  vertical-align: middle;
+} */
+
+  .input-group {
+    width: 100%;
+  }
+
+  .input-group input {
+    background-color: #dcdee0;
+  }
+  
+
+  input, label {
+    display:block;
+    border-radius: 3.5px;
+}
+
+.flashes div {
+  padding: 10px; 
+  border-radius: 3.5px;
+  margin: 10px; 
+  background-color: #eea52e;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color:#4f71bd;
+  vertical-align: middle;
+}
+
+.flashes div span {
+  padding-bottom:4px;
+}

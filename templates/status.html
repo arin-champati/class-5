@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+      <title>Class-5</title>
+      {% include 'import.html' %}
+      </head>
+   <body>
+      {% include 'navbar.html' %}
+      <br>
+      <div class='container-fluid' id='status-body'>
+         <div id='faq-holder' class='row'>
+           <div class='col-xs-12'>
+            {{status}}
+           </div>
+         </div>
+      </div>
+      <br>
+      {% include 'footer.html' %}
+   </body>
+
+   <style>
+      #status-body {
+         height: 100vh;
+      }
+   </style>
+ </html>

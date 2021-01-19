@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+      <title>Class 5</title>
+      {% include 'import.html' %}
+      <link rel="stylesheet" type="text/css" href="static/style/home_navbar.css" />
+      <link rel="stylesheet" type="text/css" href="static/style/bubble.css" />
+   </head>
+   <body>
+       
+    {% include 'home_navbar.html' %}
+    <!-- <script>
+        // resize all elements to be the same so that it doesnt look weird when the caption lengths are different
+        function resize() {
+            $('#arin').css({'height': '100%'})
+            $('#chaz').css({'height': '100%'})
+            $('#ethan').css({'height': '100%'})
+
+            arin_height = $('#arin').height()
+            chaz_height = $('#chaz').height()
+            ethan_height = $('#ethan').height()
+
+            max_height = Math.max(arin_height, chaz_height, ethan_height)
+
+            $('#arin').css({'height': max_height})
+            $('#chaz').css({'height': max_height})
+            $('#ethan').css({'height': max_height})
+        }
+
+        $(document).ready(resize);
+        $(window).on('resize', resize);
+
+
+    </script> -->
+
+    <div class='container-fluid'>
+        <div class='row' id='top'>
+            <img class='center-block' id='logo' src="/static/img/home_course.png" alt="">
+        </div>
+
+        <div class="row" id='middle'>
+            {% if session['logged_in'] %}
+                <h4 id='message'>Enter the <a href='dashboard'>Dashboard</a> to get started</h4>
+            {% else %}
+            <h4 id='message'>Enter the <a href='dashboard'>Dashboard</a> or <a href='login'>Login</a> to get started</h4>
+            {% endif %}
+        </div>
+
+        <div class="row" id='bottom'>
+            <div class='col-xs-12' id='walkthrough-left'>
+                <h4 id='header'>Enter Your Preferences</h4>
+                <a href='profile'><img class='center-block' id='walkthrough' src="/static/img/profile.jpg" alt=""></a>
+            </div>
+
+            <div class='col-xs-12' id='walkthrough-right'>
+                <h4 id='header'>Get Smart Suggestions</h4>
+                <a href='dashboard'><img class='center-block' id='walkthrough' src="/static/img/dashboard.jpg" alt=""></a>
+            </div>
+
+            <div class='col-xs-12' id='walkthrough-bottom'>
+                <h4 id='message'><a href='login'>Experience</a> the Power of Class 5</h4>
+            </div>
+         </div>
+
+         <div class='row' id='about'>
+             <div id='about-container' class='col-xs-12'>
+                <div class='row'><h3 id='header'>About Us</h3></div>
+                <div class='row'>
+                    <div class='col-md-4' id='arin'>
+                        <div class='bubble'>
+                            <img class="center-block profilePic" src="/static/img/arin.jpeg" alt=""/>
+                            <div class="profileBio">
+                                <b>Arin Champati '22</b><br>
+                                Lead Designer and Fullstack Engineer<br><br>
+                                COS major from West Bloomfield, MI. Loves to sing, plays guitar, and misses his dogs. Also, he’s Chaz’s best friend :&nbsp)
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-4' id="chaz">
+                        <div class='bubble'>
+                            <img class="center-block profilePic" src="/static/img/chaz.jpeg" alt=""/>
+                            <div class="profileBio">
+                                <b>Chaz Bethel-Brescia '22</b><br>
+                                Principle Backend Engineer<br><br>
+                                COS major from Norwalk, CT. Bass player, a cappella fanatic, and meme connoisseur. Also Arin’s best friend :&nbsp)
+                            </div>
+                        </div>
+                    </div>
+                    <div class='col-md-4' id='ethan'>
+                        <div class='bubble'>
+                            <img class="center-block profilePic"  src="/static/img/ethan.jpg" alt=""/>
+                            <div class="profileBio">
+                                <b>Ethan Seide '22</b><br>
+                                Engineering Manager<br><br>
+                                ORFE major from Bethesda, MD. Loves to free ski, play tennis, and watch sunsets. He hopes to be Chaz's new best friend.
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+             </div>
+             </div>
+    </div>
+
+    <style>
+        #top{
+            background-color:#4f71bd;
+            height: 75vmin;
+            /* width: 100vw; */
+            padding:0;
+            margin-bottom:0;
+            margin-top: 0;
+            display : flex;
+            justify-content : center;
+            align-items : center;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        }
+
+        #middle{
+            background-color:#fcfaf4;
+            min-height: 50px;
+            height: 10vmin;
+            /* width: 100vw; */
+            padding:0;
+            margin-bottom:0;
+            margin-top: 0;
+            display : flex;
+            justify-content : center;
+            align-items : center;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-top:3px solid #eea52e;
+            border-bottom:3px solid #eea52e;
+        }
+
+        /* #bottom{
+            background-color:#ccdcf6;
+            height: 60vmin;
+            padding:0;
+            margin-bottom:0;
+            margin-top: 0;
+            display : flex;
+            justify-content : center;
+            align-items : center;
+            text-align: center !important;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        } */
+
+        #walkthrough-left {
+            background-color:#ccdcf6;
+            padding-top:40px;
+            text-align: center;
+        }
+
+        #walkthrough-right {
+            background-color:#ccdcf6;
+            padding-top:40px;
+            padding-bottom:40px;
+            text-align: center;
+        }
+
+        #walkthrough-bottom {
+            background-color:#4f71bd;
+            text-align: center;
+            border-top:3px solid #eea52e;
+            color: #fdfdfd;
+            display: flex;
+            align-items: center;
+            justify-content : center;
+
+            min-height: 50px;
+            height: 10vmin;
+        }
+
+        #about{
+            background-color:#fcfaf4;
+            /* width: 100vw; */
+            padding-bottom:15px;
+            padding-top: 15px;
+            display : flex;
+            justify-content : center !important;
+            align-items : center !important;
+            text-align: center !important;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+            border-top:3px solid #eea52e;
+            /* border-bottom:3px solid #eea52e; */
+        }
+
+        #about-container {
+            margin-bottom:5%;
+        }
+
+        /* .profile {
+            padding-left:6.5%;
+            padding-right: 6.5%;
+            padding-top: 3%;
+            padding-bottom: 4%;
+            margin-bottom:0;
+            margin-top: 0;
+            justify-content : center;
+            align-items : center;
+            -webkit-box-shadow: none;
+            -moz-box-shadow: none;
+            box-shadow: none;
+        } */
+
+
+        /* .profilePic {
+            border-radius: 10px;
+            background-color: #fcfaf4;
+            max-height:400px;
+            max-width:400px;
+            height:auto;
+            width:auto;
+
+            width:40%;
+            height:auto;
+            width:auto;
+            display: block;
+            border: 3px solid #fcfaf4;
+        } */
+
+        .profilePic {
+            max-height:540px;
+            max-width: 440px;
+
+            height:auto;
+            width:auto;
+            display: block;
+            } 
+
+        .profilePic {
+            margin-top:15px;
+            width:40%;
+            border-radius: 10px;
+            position: sticky; 
+
+            -webkit-position: sticky;
+            -moz-position: sticky;
+
+            -webkit-box-shadow: 0 0 5px #c2c4ca;
+                -moz-box-shadow: 0 0 5px #c2c4ca;
+                box-shadow: 0 0 5px #c2c4ca;
+            }
+
+        .profileBio {
+            text-align: center;
+            top: 10px;
+            width: 220px;
+            width:70%;
+            position: relative;
+            left: 50%;
+            transform:translateX(-50%);
+            padding-bottom:25px;
+        }
+
+        .bubble {
+            padding: 20px;
+        }
+
+        #logo {
+            max-height:500px;
+            max-width:500px;
+            min-width:175px;
+            height:auto;
+            width:auto;
+            } 
+
+        #logo {
+            width:35%;
+            object-fit: contain;
+            }
+        
+        #walkthrough {
+            max-height:900px;
+            max-width:900px;
+            height:auto;
+            width:auto;
+            display: block;
+            } 
+
+        #walkthrough {
+            width:70%;
+
+            /* object-fit: contain; */
+            border-radius: 15px;
+
+            position: sticky;
+            -webkit-position: sticky;
+            -moz-position: sticky;
+
+            -webkit-box-shadow: 0 0 10px #c2c4ca;
+            -moz-box-shadow: 0 0 10px #c2c4ca;
+            box-shadow: 0 0 10px #c2c4ca;
+            }
+
+        #message {
+            font-size: 18px;
+        }
+
+        #walkthrough-bottom a {
+            color: #ccdcf6; 
+        }
+
+        #header {
+            font-size: 24px;
+        }
+
+        /* For mobile phones */
+        @media only screen and (max-width:400px) {
+            #message {
+                font-size: 12px;
+            }
+            #header {
+                font-size: 18px;
+            }
+        }
+
+        @media only screen and (min-width:401px) and (max-width:767px) {
+            #message {
+                font-size: 14px;
+            }
+            #header {
+                font-size: 20px;
+            }
+        }
+        /* For computers */
+        @media only screen and (min-width:768px) and (max-width:2000px) {
+            #message {
+                font-size: 17px;
+            }
+            #header {
+                font-size: 23px;
+            }
+        }
+
+        /* For large stuff */
+        @media only screen and (min-width:2001px) {
+            #message {
+                font-size: 20px;
+            }
+        }
+
+        /* When browser height too small, reduce sizes */
+        @media only screen and (max-height:700px) {
+            #top {
+                height: 525px;
+            }
+            /* #bottom {
+                height: 540px;
+            } */
+
+            #about {
+                display: block;
+            }
+            
+        }
+
+
+        @media only screen and (max-width: 1199px){
+            .profilePic{
+                max-height:180px;
+                max-width:146px;
+            }
+        }
+
+        /* When browser width too small, reduce sizes */
+        @media only screen and (max-width: 700px){
+            #top {
+                height: 525px;
+            }
+            /* #bottom {
+                height: 540px;
+            } */
+            #about {
+                display: block;
+            }
+            .profilePic{
+                max-height:180px;
+                max-width:146px;
+                width:30%;
+            }
+        }
+
+
+    </style>
+
+      {% include 'footer.html' %}
+   </body>
+ </html>
