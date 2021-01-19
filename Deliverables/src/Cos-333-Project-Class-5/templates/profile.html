@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+ <html>
+   <head>
+      <title>Profile</title>
+      {% include 'import.html' %}
+      
+      <link rel="stylesheet" type="text/css" href="static/style/bubble.css" />
+      <link rel="stylesheet" type="text/css" href="static/style/autocomplete.css" />
+      <link rel="stylesheet" type="text/css" href="static/style/form.css" /> 
+      </head>
+   <body>
+
+    {% with page='profile' %}
+        {% include 'navbar.html' %}
+      {% endwith %}        
+
+      <div class='container-fluid' id='profile-body'>
+        <div class='row'>
+          <div class='col-md-4'></div>
+          <div class='col-md-4 text-center'>
+            <h1>Profile</h1>
+            <br>
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+              <div class='flashes'>
+              {% for message in messages %}
+                <div><span class="glyphicon glyphicon-exclamation-sign" aria-hidden="true"></span>&nbsp&nbsp&nbsp{{ message }}</div>
+              {% endfor %}
+              </div>
+            {% endif %}
+          {% endwith %}
+          </div>
+          <div class='col-md-4'></div>
+        </div>
+
+        <form id='profile' action="profile" autocomplete="off" method="post">
+          <div class='row'>
+            <div class='col-md-3'>
+              <div id='personal-info' class='bubble scrollable'>
+                <h3 id='personal-header'>Personal Info</h3>
+                
+                <label for="name">Full Name: </label>
+                <div class="non-removable input-group mb-3">
+                  <input type="text" class="form-control" name="name" id="name" placeholder="Enter your name" value="{{name}}" autocomplete="off">
+                </div>
+
+                <div class="non-removable autocomplete">
+                <label for="year">Graduation Year: </label>
+                <div class="input-group mb-3">
+                  <input type="number" class="form-control" name="year" id="year" placeholder="Enter class year" value="{{year}}" required autocomplete="off">
+                </div>
+                </div>
+                
+                <!-- <label for="email">Email: </label>
+                <div class="non-removable input-group mb-3">
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Enter your email address" value="{{email}}" required autocomplete="off">
+                </div> -->
+
+                <div class="non-removable autocomplete">
+                  <label for="major">Intended Major: </label>
+                  <div class="input-group mb-3">
+                    <input type="text" class="form-control" name="major" id="major"  placeholder="Enter your major" value="{{major}}" required autocomplete="off">
+                  </div>
+                  </div>
+
+                  <!-- {% for cert in certificates: %}
+                    <div class="autocomplete">
+                      <label id="certificate-label{{ loop.index }}" for="certificate{{ loop.index }}">Certificate #{{ loop.index }}:</label>
+                      <div class="input-group mb-3">
+                          <input class="form-control profile-input certificate" type="text" id="certificate{{ loop.index }}" name="certificate{{ loop.index }}" placeholder="Enter a certificate" value="{{cert}}" autocomplete="off">
+                        <span class="input-group-btn">
+                          <button class="btn btn-primary remove-button"  onclick='removeCertificate(this)' type="button"><span class="glyphicon glyphicon-remove" aria-hidden="true">
+                          </span></button>
+                          </span>
+                      </div>
+                    </div>
+                  {% endfor %}
+                  <button class='btn btn-primary add-button ' type="button" onclick="addCertificate()"><span class="glyphicon glyphicon-plus" aria-hidden="true">
+                  </span></button> -->
+                  <div id="certificateHolder"></div>
+                    <button class='btn btn-primary add-button' id="add-certificate" type="button" title="Add a certificate" onclick="addCertificate()"><span class="glyphicon glyphicon-plus" aria-hidden="true">
+                    </span></button>
+
+
+              </div>
+            </div>
+            
+
+            <div class='col-md-3'>
+              <div id='liked-info' class='bubble scrollable'>
+                <h3>Courses You Like</h3>
+                    <div id="likedCourseHolder"></div>
+                    <button class='btn btn-primary add-button ' type="button" title="Add a liked course" onclick="addLikedCourse()"><span class="glyphicon glyphicon-plus" aria-hidden="true">
+                    </span></button>
+              </div>
+            </div>
+
+            <div id='disliked-info' class='col-md-3'>
+              <div class='bubble scrollable'>
+                <h3>Courses You Dislike</h3>
+                    <div id="dislikedCourseHolder"></div>
+                    <button class='btn btn-primary add-button' type="button" title="Add a disliked course" onclick="addDislikedCourse()"><span class="glyphicon glyphicon-plus" aria-hidden="true">
+                    </span></button>
+              </div>
+            </div>
+
+            <div id='suggestion-info' class='col-md-3'>
+              <div class='bubble scrollable'>
+                <h3>Suggestions You Dislike</h3>
+                <!-- <div class="input-group mb-3 non-removable" id='clear-all'>
+                  <input class="form-control profile-input filter" onclick='clearDislikedSuggestions(this)' type="text" 
+                  id='clear-all-button' name="clear-all" value="Clear all disliked suggestions" readonly autocomplete="off">
+                </div> -->
+                <div class="input-group mb-3 filters" id='clear-all'>
+                  <input class="form-control profile-input filter" type="text" value="Clear all disliked suggestions" onclick='clearDislikedSuggestions(this)' readonly autocomplete="off">
+              <span class="input-group-btn">
+                  <button class="btn btn-primary remove-button" type="button" onclick='clearDislikedSuggestions()'><span class="glyphicon glyphicon-chevron-right" aria-hidden="true">
+                  </span></button>
+              </span>
+              </div>
+                
+                <div id="dislikedSuggestionHolder"></div>
+              </div>
+            </div>
+          </div>
+
+            <div class='row'>
+              <div class='col-md-4'></div>
+              <div class='col-md-4'>
+                <div class='bubble scrollable' id='bubble-5'>
+                  <h3>Favorite "Fifth" Course</h3>
+                  <div class="autocomplete" id='non-removable'>
+                    <label for="favorite">Favorite: </label>
+                    <div class="input-group mb-3">
+                      <input class='favorite form-control' type="text" name="favorite" id="favorite" placeholder="Enter a favorite fifth course" value="{{favorite}}" required autocomplete="off"> 
+                      
+                    </div>
+                  </div>
+                </div>
+                  <div class='col-md-4'></div>
+              </div>
+            </div>
+    
+            <br>
+            
+            <div class='row'>
+              <div class='col-md-4'></div>
+              <div class='col-md-4' id='submit-button'>
+                <input type="submit" value="Save Changes">
+              </div>
+              <div class='col-md-4'></div>
+            </div>
+        </form>
+      </div>
+
+      <br>
+
+    <!-- Establish global variables to be used in the javascript file -->
+  <script>
+    window.disliked = {{disliked|tojson}};
+    window.liked = {{liked|tojson}};
+    window.disliked_suggestions = {{disliked_suggestions|tojson}};
+    window.certificates = {{certificates|tojson}};
+    window.min_preference = {{min_preference|tojson}};
+    window.max_preference = {{max_preference|tojson}};
+    window.max_certificates = {{max_preference|tojson}};
+  </script>
+
+    <script src="{{url_for('static', filename='script/dummy-input.js')}}"></script>
+    <script src="{{url_for('static', filename='script/profile.js')}}"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='script/autocomplete.js')}}"></script>
+  
+  <script src="static/script/jquery.are-you-sure.js"></script>
+  <!-- <script src="static/script/ays-beforeunload-shim.js"></script> -->
+  <script>
+    $(function() {
+      $('#profile').areYouSure( {'message':"You may have unsaved changes. If you leave before saving, your changes will be lost. \n\n Press OK to leave this page or CANCEL to stay."} );
+    });
+
+
+  </script>
+
+  {% include 'footer.html' %}
+
+  <style>
+
+    #clear-all {
+      display: none;
+    }
+
+    #likedCourseHolder {
+      padding: 15px;
+      padding-top: 5px;
+    }
+
+    #dislikedCourseHolder {
+      padding: 15px;
+      padding-top: 5px;
+    }
+
+    #certificateHolder {
+      padding: 15px;
+      padding-top: 5px;
+    }
+
+    #dislikedSuggestionHolder {
+      padding: 15px;
+      padding-top: 5px;
+    }
+
+    #clear-all {
+      margin-top: 8px;
+    }
+
+    #personal-header {
+      padding-bottom: 5px;
+    }
+
+    #cert-title {
+      margin-left: -15px !important;
+    }
+
+    #add-certificate {
+      margin-top: -5px !important;
+    }
+
+    body {
+      background-color:  #fdfdfd;
+      background-color: #fcfaf4;
+    }
+
+    h1 {
+      color: black;
+    }
+
+    h3 {
+      margin-top: 20px;
+      display: inline-block;
+    }
+
+    input {
+      width: 100%;
+    }
+
+    input[type=submit] {
+      width: 50%;
+      background-color: #eea52e;
+      color: #4f71bd;
+    }
+
+   .disliked-suggestion {
+      background-color: #dcdee0 !important;
+    }
+
+    #suggestion-message{
+      text-align: center;
+    }
+
+    #profile-body {
+      min-height: 100vh;
+    }
+
+    .favorite {
+      border-radius: 3.5px !important;
+    }
+
+
+    #bubble-5 {
+      min-height: 150px;
+    }
+
+    #submit-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* @media only screen and (max-width:1100px) {
+      .col-md-4 {
+        width: 100%;
+      }
+      .col-md-3 {
+        width: 100%;
+      }
+    } */
+
+  </style> 
+   </body>
+</html>
