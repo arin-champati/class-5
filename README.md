@@ -17,5 +17,12 @@ If you wish to view a more in-depth exploration of our project, please look in t
 ### Profile Page
 This is where the user can enter their basic information and course preferences.
 
-![Alt text](Demonstration/profile.png?raw=true "create")
+![Alt text](Demonstration/profile.jpg?raw=true)
 
+### Dashboard Page
+This is where the user can view their course suggestions, course information, as well as other cool filters.
+
+![Alt text](Demonstration/dashboard.png?raw=true)
+
+Note that this website is responsive, so here is one screenshot of what the dashboard page looks like on an iPhone.
+![Alt text](Demonstration/mobile_dash.png?raw=true)
