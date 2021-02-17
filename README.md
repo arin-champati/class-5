@@ -25,4 +25,4 @@ This is where the user can view their course suggestions, course information, as
 ![Alt text](Demonstration/dashboard.png?raw=true)
 
 Note that this website is responsive, so here is one screenshot of what the dashboard page looks like on an iPhone.
-![Alt text](Demonstration/mobile_dash.png?raw=true)
+![Alt text](Demonstration/mobile_dash.PNG?raw=true)
