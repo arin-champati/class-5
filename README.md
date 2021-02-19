@@ -1,5 +1,5 @@
 # Cos-333-Project-Class-5
-Class 5: A Class-Recommender for Princeton Students 
+Class 5: A Class-Recommender for Princeton Students
 
 https://class-5.herokuapp.com
 
